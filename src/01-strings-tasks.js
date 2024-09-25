@@ -51,7 +51,7 @@ function getStringLength(str) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(a,b) {
+function getStringFromTemplate(a, b) {
   return `Hello, ${a} ${b}!`;
 }
 
@@ -66,7 +66,7 @@ function getStringFromTemplate(a,b) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(str) {
-  return str.slice(7,-1);
+  return str.slice(7, -1);
 }
 
 
@@ -127,7 +127,7 @@ function repeatString(str, a) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, a) {
-return str.replace(a, '');
+  return str.replace(a, '');
 }
 
 /**
@@ -202,10 +202,10 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(b,a) {
-  let str = '┌'+'─'.repeat(b-2) +'┐\n';
-    str += ('│'+' '.repeat(b-2) +'│\n').repeat(a-2);
-    str +=  '└'+'─'.repeat(b-2) +'┘\n'
+function getRectangleString(b, a) {
+  let str = '┌' + '─'.repeat(b - 2) + '┐\n';
+  str += ('│' + ' '.repeat(b - 2) + '│\n').repeat(a - 2);
+  str += '└' + '─'.repeat(b - 2) + '┘\n'
   return str;
 }
 
@@ -229,11 +229,12 @@ function getRectangleString(b,a) {
 function encodeToRot13(str) {
   let newStr = '';
   const alf = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!? ',
-        key = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm!? '
+    key = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm!? '
   for (let i = 0; i < str.length; i++) {
     newStr += key[alf.indexOf(str[i])]
   }
-return newStr}
+  return newStr
+}
 
 /**
  * Returns true if the value is string; otherwise false.
@@ -249,7 +250,7 @@ return newStr}
  *   isString(new String('test')) => true
  */
 function isString(a) {
-    return typeof a === 'string' || a instanceof String;
+  return typeof a === 'string' || a instanceof String;
 }
 
 
@@ -278,11 +279,11 @@ function isString(a) {
  *   'K♠' => 51
  */
 function getCardId(str) {
-  const cards = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-                 'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-                 'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-                 'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']
-return cards.indexOf(str);
+  const cards = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠']
+  return cards.indexOf(str);
 }
 
 
