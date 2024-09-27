@@ -17,6 +17,5 @@ module.exports = {
   },
   rules: {
     "linebreak-style": ["error", "windows"],
-    "no-restricted-globals": ["error", "event", "fdescribe"]
   },
 };
