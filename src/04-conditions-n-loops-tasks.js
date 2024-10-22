@@ -409,32 +409,34 @@ function getCommonDirectoryPath(pathes) {
 
 
 /**
- * Returns the product of two specified matrixes.
- * See details: https://en.wikipedia.org/wiki/Matrix_multiplication
- *
- * @param {array} m1
- * @param {array} m2
- * @return {array}
- *
- * @example:
- *   [[ 1, 0, 0 ],       [[ 1, 2, 3 ],           [[ 1, 2, 3 ],
- *    [ 0, 1, 0 ],   X    [ 4, 5, 6 ],     =>     [ 4, 5, 6 ],
- *    [ 0, 0, 1 ]]        [ 7, 8, 9 ]]            [ 7, 8, 9 ]]
- *
- *                        [[ 4 ],
- *   [[ 1, 2, 3]]    X     [ 5 ],          =>     [[ 32 ]]
- *                         [ 6 ]]
- *
- */
-/* function getMatrixProduct(m1, m2) {
-  const result = [];
-  for (let i = 0; i < m1[0].length; i += 1) {
+   * Returns the product of two specified matrixes.
+   * See details: https://en.wikipedia.org/wiki/Matrix_multiplication
+   *
+   * @param {array} m1
+   * @param {array} m2
+   * @return {array}
+   *
+   * @example:
+   *   [[ 1, 0, 0 ],       [[ 1, 2, 3 ],           [[ 1, 2, 3 ],
+   *    [ 0, 1, 0 ],   X    [ 4, 5, 6 ],     =>     [ 4, 5, 6 ],
+   *    [ 0, 0, 1 ]]        [ 7, 8, 9 ]]            [ 7, 8, 9 ]]
+   *
+   *                        [[ 4 ],
+   *   [[ 1, 2, 3]]    X     [ 5 ],          =>     [[ 32 ]]
+   *                         [ 6 ]]
+   *
+   */
+function getMatrixProduct(m1, m2) {
+  const result = Array.from({ length: m1.length }, () => Array(m2[0].length).fill(0));
+  for (let i = 0; i < m1.length; i += 1) {
     for (let j = 0; j < m2[0].length; j += 1) {
-
+      for (let k = 0; k < m1[0].length; k += 1) {
+        result[i][j] += m1[i][k] * m2[k][j];
+      }
     }
   }
   return result;
-} */
+}
 
 
 /**
@@ -467,12 +469,23 @@ function getCommonDirectoryPath(pathes) {
  *    [    ,   ,    ]]
  *
  */
-/* function evaluateTicTacToePosition(position) {
-  for (pos in position) {
-    if (pos[0] === pos[1] && pos[0] === pos[2]) return pos[0];
-  }
-  return;
-} */
+function evaluateTicTacToePosition(position) {
+  const variants = [
+    [position[0][0], position[0][1], position[0][2]],
+    [position[1][0], position[1][1], position[1][2]],
+    [position[2][0], position[2][1], position[2][2]],
+    [position[0][0], position[1][0], position[2][0]],
+    [position[0][1], position[1][1], position[2][1]],
+    [position[0][2], position[1][2], position[2][2]],
+    [position[0][0], position[1][1], position[2][2]],
+    [position[0][2], position[1][1], position[2][0]]];
+  return variants.map((variant) => {
+    if (variant[0] === variant[1] && variant[0] === variant[2]) {
+      return variant[0];
+    }
+    return undefined;
+  }).find((result) => result !== undefined);
+}
 
 
 module.exports = {
@@ -491,6 +504,6 @@ module.exports = {
   isBracketsBalanced,
   toNaryString,
   getCommonDirectoryPath,
-  /* getMatrixProduct,
-  evaluateTicTacToePosition, */
+  getMatrixProduct,
+  evaluateTicTacToePosition,
 };
